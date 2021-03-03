@@ -15,7 +15,11 @@ class WebClient(object):
     def parse_web_page(self, html):
         soup = bs4.BeautifulSoup(html, features='lxml')
         news = soup.find_all('li', 'box')
-        return news
+        information = []
+        for new in news:
+            title = new.find('a')
+            information.append(title)
+        return information
 
     def get_information(self):
         html = self.get_web_page()
