@@ -17,7 +17,8 @@ class WebClient(object):
         news = soup.find_all('li', 'box')
         information = []
         for new in news:
-            title = new.find('a')
+            title_tag = new.find('a')
+            title = title_tag['title']
             information.append(title)
         return information
 
