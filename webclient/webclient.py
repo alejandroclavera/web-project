@@ -19,7 +19,11 @@ class WebClient(object):
         for new in news:
             title_tag = new.find('a')
             title = title_tag['title']
-            information.append(title)
+            link = title_tag['href']
+
+            time_tag = new.find('time')
+            time = time_tag.text.strip()
+            information.append((title, link, time))
         return information
 
     def get_information(self):
