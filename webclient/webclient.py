@@ -1,4 +1,6 @@
 from urllib.request import urlopen
+from urllib.parse import urljoin
+
 import bs4
 
 class WebClient(object):
@@ -20,6 +22,8 @@ class WebClient(object):
             title_tag = new.find('a')
             title = title_tag['title']
             link = title_tag['href']
+                
+            link = urljoin('http://bid.udl.cat/ca/', link)
 
             time_tag = new.find('time')
             time = time_tag.text.strip()
